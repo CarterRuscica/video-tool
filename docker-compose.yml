@@ -1,0 +1,33 @@
+services:
+  frontend:
+    build:
+      context: .
+      dockerfile: frontend/Dockerfile
+    ports:
+      - "1420:1420"
+    volumes:
+      - ./frontend/src:/app/frontend/src
+      - ./shared:/app/shared
+    environment:
+      - TAURI_DEV=true
+
+  backend:
+    build:
+      context: .
+      dockerfile: backend/Dockerfile
+    ports:
+      - "8765:8765"
+    volumes:
+      - ./backend/src:/app/backend/src
+      - ./shared:/app/shared
+      - /tmp/video-analysis:/data
+    environment:
+      - MODE=server
+      - ROBOFLOW_API_KEY=${ROBOFLOW_API_KEY:-}
+    deploy:
+      resources:
+        reservations:
+          devices:
+            - driver: nvidia
+              count: all
+              capabilities: [gpu]

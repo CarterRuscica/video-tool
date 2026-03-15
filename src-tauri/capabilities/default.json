@@ -1,0 +1,21 @@
+{
+  "identifier": "default",
+  "description": "Default capability for the app",
+  "windows": ["main"],
+  "permissions": [
+    "core:default",
+    "shell:allow-execute",
+    "shell:allow-stdin-write",
+    "shell:allow-spawn",
+    {
+      "identifier": "shell:allow-execute",
+      "allow": [
+        {
+          "name": "video-analysis-sidecar",
+          "sidecar": true,
+          "args": true
+        }
+      ]
+    }
+  ]
+}

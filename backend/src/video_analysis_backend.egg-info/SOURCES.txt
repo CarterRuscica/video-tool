@@ -1,0 +1,14 @@
+pyproject.toml
+src/__init__.py
+src/ffmpeg_render.py
+src/inference_worker.py
+src/main.py
+src/schema.py
+src/telemetry.py
+src/video_analysis_backend.egg-info/PKG-INFO
+src/video_analysis_backend.egg-info/SOURCES.txt
+src/video_analysis_backend.egg-info/dependency_links.txt
+src/video_analysis_backend.egg-info/requires.txt
+src/video_analysis_backend.egg-info/top_level.txt
+tests/test_schema.py
+tests/test_telemetry.py

@@ -1,0 +1,95 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "title": "VideoAnalysisSchema",
+  "definitions": {
+    "BBox": {
+      "type": "object",
+      "properties": {
+        "x": { "type": "number" },
+        "y": { "type": "number" },
+        "width": { "type": "number" },
+        "height": { "type": "number" }
+      },
+      "required": ["x", "y", "width", "height"]
+    },
+    "Detection": {
+      "type": "object",
+      "properties": {
+        "class_name": { "type": "string" },
+        "confidence": { "type": "number", "minimum": 0, "maximum": 1 },
+        "bbox": { "$ref": "#/definitions/BBox" },
+        "frame_index": { "type": "integer" },
+        "timestamp": { "type": "number" }
+      },
+      "required": ["class_name", "confidence", "bbox", "frame_index", "timestamp"]
+    },
+    "TimedEvent": {
+      "type": "object",
+      "properties": {
+        "id": { "type": "string" },
+        "label": { "type": "string" },
+        "class_name": { "type": "string" },
+        "start_time": { "type": "number" },
+        "end_time": { "type": "number" },
+        "start_frame": { "type": "integer" },
+        "end_frame": { "type": "integer" },
+        "color": { "type": "string" },
+        "avg_confidence": { "type": "number" }
+      },
+      "required": ["id", "label", "class_name", "start_time", "end_time", "start_frame", "end_frame"]
+    },
+    "TelemetryPoint": {
+      "type": "object",
+      "properties": {
+        "timestamp": { "type": "number" },
+        "values": {
+          "type": "object",
+          "additionalProperties": { "type": "number" }
+        }
+      },
+      "required": ["timestamp", "values"]
+    },
+    "Sequence": {
+      "type": "object",
+      "properties": {
+        "id": { "type": "string" },
+        "label": { "type": "string" },
+        "source_video": { "type": "string" },
+        "in_point": { "type": "number" },
+        "out_point": { "type": "number" },
+        "in_frame": { "type": "integer" },
+        "out_frame": { "type": "integer" }
+      },
+      "required": ["id", "label", "source_video", "in_point", "out_point", "in_frame", "out_frame"]
+    },
+    "RenderList": {
+      "type": "object",
+      "properties": {
+        "id": { "type": "string" },
+        "name": { "type": "string" },
+        "sequences": {
+          "type": "array",
+          "items": { "$ref": "#/definitions/Sequence" }
+        },
+        "total_duration": { "type": "number" }
+      },
+      "required": ["id", "name", "sequences", "total_duration"]
+    },
+    "SpatialTemporalManifest": {
+      "type": "object",
+      "properties": {
+        "video_path": { "type": "string" },
+        "model_id": { "type": "string" },
+        "fps": { "type": "number" },
+        "total_frames": { "type": "integer" },
+        "duration": { "type": "number" },
+        "events": {
+          "type": "array",
+          "items": { "$ref": "#/definitions/TimedEvent" }
+        },
+        "detections_file": { "type": "string" }
+      },
+      "required": ["video_path", "model_id", "fps", "total_frames", "duration", "events", "detections_file"]
+    }
+  }
+}

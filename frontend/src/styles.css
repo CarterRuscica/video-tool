@@ -1,0 +1,228 @@
+:root {
+  --bg-primary: #1a1a2e;
+  --bg-secondary: #16213e;
+  --bg-tertiary: #0f3460;
+  --accent: #e94560;
+  --text-primary: #eee;
+  --text-secondary: #aaa;
+  --border: #333;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+  background: var(--bg-primary);
+  color: var(--text-primary);
+  overflow: hidden;
+  height: 100vh;
+}
+
+#root {
+  height: 100vh;
+}
+
+.app {
+  display: flex;
+  flex-direction: column;
+  height: 100vh;
+}
+
+.app-header {
+  padding: 8px 16px;
+  background: var(--bg-secondary);
+  border-bottom: 1px solid var(--border);
+  display: flex;
+  align-items: center;
+  gap: 16px;
+}
+
+.app-header h1 {
+  font-size: 14px;
+  font-weight: 600;
+}
+
+.app-main {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+}
+
+.top-panel {
+  flex: 3;
+  min-height: 0;
+  display: flex;
+  background: #000;
+}
+
+.middle-panel {
+  flex: 2;
+  min-height: 0;
+  display: flex;
+  flex-direction: column;
+  border-top: 1px solid var(--border);
+}
+
+.bottom-panel {
+  flex: 1;
+  min-height: 120px;
+  border-top: 1px solid var(--border);
+  background: var(--bg-secondary);
+}
+
+.video-container {
+  position: relative;
+  flex: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.video-container video {
+  max-width: 100%;
+  max-height: 100%;
+}
+
+.video-overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+}
+
+.telemetry-chart {
+  flex: 1;
+  min-height: 0;
+  position: relative;
+}
+
+.event-track {
+  height: 40px;
+  background: var(--bg-tertiary);
+  position: relative;
+  overflow: hidden;
+}
+
+.event-block {
+  position: absolute;
+  height: 100%;
+  border-radius: 3px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  padding: 0 4px;
+  font-size: 11px;
+  overflow: hidden;
+  white-space: nowrap;
+}
+
+.master-clock {
+  height: 36px;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 0 12px;
+  background: var(--bg-secondary);
+}
+
+.master-clock .time-display {
+  font-family: monospace;
+  font-size: 13px;
+  min-width: 100px;
+}
+
+.master-clock .scrubber {
+  flex: 1;
+  height: 4px;
+  -webkit-appearance: none;
+  appearance: none;
+  background: var(--border);
+  border-radius: 2px;
+  outline: none;
+  cursor: pointer;
+}
+
+.master-clock .scrubber::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  width: 12px;
+  height: 12px;
+  border-radius: 50%;
+  background: var(--accent);
+  cursor: pointer;
+}
+
+.master-clock button {
+  background: none;
+  border: 1px solid var(--border);
+  color: var(--text-primary);
+  padding: 4px 12px;
+  border-radius: 4px;
+  cursor: pointer;
+  font-size: 12px;
+}
+
+.master-clock button:hover {
+  background: var(--bg-tertiary);
+}
+
+.sequence-bin {
+  height: 100%;
+  padding: 8px;
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.sequence-bin-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-size: 12px;
+  color: var(--text-secondary);
+}
+
+.sequence-list {
+  display: flex;
+  gap: 4px;
+  overflow-x: auto;
+  flex: 1;
+  align-items: stretch;
+}
+
+.sequence-block {
+  min-width: 80px;
+  padding: 8px;
+  background: var(--bg-tertiary);
+  border: 1px solid var(--border);
+  border-radius: 4px;
+  font-size: 11px;
+  cursor: grab;
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+
+.sequence-block .label {
+  font-weight: 600;
+}
+
+.sequence-block .times {
+  color: var(--text-secondary);
+}
+
+.playhead {
+  position: absolute;
+  top: 0;
+  width: 1px;
+  height: 100%;
+  background: var(--accent);
+  pointer-events: none;
+  z-index: 10;
+}

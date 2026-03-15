@@ -1,0 +1,10 @@
+Metadata-Version: 2.4
+Name: video-analysis-backend
+Version: 0.1.0
+Requires-Python: >=3.11
+Requires-Dist: inference-sdk>=0.25.0
+Requires-Dist: pydantic>=2.0
+Requires-Dist: numpy>=1.26.0
+Provides-Extra: dev
+Requires-Dist: pytest>=8.0; extra == "dev"
+Requires-Dist: pytest-asyncio>=0.23.0; extra == "dev"
