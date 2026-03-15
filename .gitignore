@@ -1,0 +1,40 @@
+# Dependencies
+frontend/node_modules/
+backend/.venv/
+backend/src/*.egg-info/
+
+# Build artifacts
+frontend/dist/
+src-tauri/target/
+src-tauri/gen/
+
+# Python
+__pycache__/
+*.pyc
+.pytest_cache/
+
+# Environment / secrets
+.env
+.env.*
+!.env.example
+
+# OS files
+.DS_Store
+Thumbs.db
+
+# IDE
+.vscode/
+.idea/
+*.swp
+*.swo
+
+# Logs
+*.log
+
+# Data / output (large files)
+*.mp4
+*.avi
+*.mov
+*.mkv
+frame-detections.jsonl
+spatial-temporal.json
